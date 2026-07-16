@@ -102,10 +102,10 @@ export function CodeDisplay({
 	const isIdle = workflowStatus === "idle" && !isStarting;
 
 	return (
-		<div className="h-full overflow-auto p-4">
+		<div className="min-h-[360px] lg:h-full overflow-auto p-3 sm:p-4">
 			<div className="backdrop-blur-xl bg-white/80 dark:bg-neutral-900/80 rounded-2xl shadow-float ring-glass overflow-hidden">
 				{/* Window chrome header */}
-				<div className="flex items-center gap-2 px-4 py-3">
+				<div className="flex items-center gap-2 px-3 sm:px-4 py-3">
 					<div className="flex gap-1.5">
 						<div className="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-500" />
 						<div className="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-500" />
@@ -119,7 +119,7 @@ export function CodeDisplay({
 					<button
 						onClick={isIdle ? onStartWorkflow : undefined}
 						disabled={!isIdle}
-						className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+						className={`px-3 py-1 text-xs font-medium rounded-md transition-all touch-manipulation ${
 							isIdle
 								? "bg-neutral-900 dark:bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
 								: "bg-neutral-200 dark:bg-neutral-700 text-neutral-400 dark:text-neutral-500 cursor-not-allowed"
@@ -130,8 +130,8 @@ export function CodeDisplay({
 				</div>
 
 				{/* Code content */}
-				<pre className="px-6 pb-6 pt-4 overflow-x-auto">
-					<code className="text-[13px] font-mono leading-relaxed block min-w-max text-neutral-800 dark:text-neutral-200">
+				<pre className="px-4 sm:px-6 pb-6 pt-4 overflow-x-auto">
+					<code className="text-[11px] sm:text-[13px] font-mono leading-relaxed block min-w-max text-neutral-800 dark:text-neutral-200">
 						{lines.map((line, idx) => {
 							const lineNum = idx + 1;
 							const isHighlighted =

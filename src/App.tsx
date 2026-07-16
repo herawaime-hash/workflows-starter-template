@@ -56,14 +56,14 @@ function App() {
 			</div>
 
 			{/* Minimal Integrated Header */}
-			<header className="px-6 pt-6 pb-4 relative z-10">
-				<div className="flex items-center justify-between">
-					<div className="flex items-center gap-3">
+			<header className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 relative z-10">
+				<div className="flex items-center justify-between gap-3">
+					<div className="flex items-center gap-2 sm:gap-3 min-w-0">
 						<svg
 							role="img"
 							viewBox="0 0 460 271.2"
 							aria-hidden="true"
-							className="h-5 w-auto opacity-90"
+							className="h-5 w-auto opacity-90 shrink-0"
 						>
 							<path
 								fill="#FBAD41"
@@ -74,8 +74,8 @@ function App() {
 								d="M292.8,204.4c2.1-7.2,1.3-13.8-2.2-18.7c-3.2-4.5-8.6-7.1-15.1-7.4l-123.1-1.6c-0.8,0-1.5-0.4-1.9-1s-0.5-1.4-0.3-2.2c0.4-1.2,1.6-2.1,2.9-2.2l124.2-1.6c14.7-0.7,30.7-12.6,36.3-27.2l7.1-18.5c0.3-0.8,0.4-1.6,0.2-2.4c-8-36.2-40.3-63.2-78.9-63.2c-35.6,0-65.8,23-76.6,54.9c-7-5.2-15.9-8-25.5-7.1c-17.1,1.7-30.8,15.4-32.5,32.5c-0.4,4.4-0.1,8.7,0.9,12.7c-27.9,0.8-50.2,23.6-50.2,51.7c0,2.5,0.2,5,0.5,7.5c0.2,1.2,1.2,2.1,2.4,2.1h227.2c1.3,0,2.5-0.9,2.9-2.2L292.8,204.4z"
 							/>
 						</svg>
-						<div className="w-px h-4 bg-neutral-300/50 dark:bg-neutral-600/50" />
-						<h1 className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+						<div className="w-px h-4 bg-neutral-300/50 dark:bg-neutral-600/50 shrink-0" />
+						<h1 className="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-400 truncate">
 							Workflows Starter Template
 						</h1>
 					</div>
@@ -84,17 +84,17 @@ function App() {
 						href="https://developers.cloudflare.com/workflows"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
+						className="text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors shrink-0"
 					>
-						Documentation →
+						Docs →
 					</a>
 				</div>
 			</header>
 
 			{/* Main content - unified canvas */}
-			<main className="flex-1 flex flex-col lg:flex-row overflow-hidden relative z-10">
-				{/* Left side - Code (responsive width) */}
-				<div className="w-full lg:w-[60%] overflow-hidden px-6 pb-6">
+			<main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden relative z-10">
+				{/* Top / Left — Code panel */}
+				<div className="w-full lg:w-[60%] lg:overflow-hidden px-4 sm:px-6 pb-4 lg:pb-6">
 					<CodeDisplay
 						currentStep={workflowState.currentStep}
 						workflowStatus={workflowState.workflowStatus}
@@ -103,8 +103,8 @@ function App() {
 					/>
 				</div>
 
-				{/* Right side - Diagram (responsive width) */}
-				<div className="flex-1 overflow-hidden px-6 lg:pl-8 lg:pr-6 pb-6">
+				{/* Bottom / Right — Diagram panel */}
+				<div className="w-full lg:flex-1 lg:overflow-hidden px-4 sm:px-6 lg:pl-8 lg:pr-6 pb-6">
 					<WorkflowDiagram
 						steps={WORKFLOW_STEPS}
 						stepStatuses={workflowState.stepStatuses}

@@ -3,7 +3,7 @@ import type { StepDefinition, StepStatus } from "../types";
 
 // Layout constants
 const NODE_HEIGHT = 48;
-const NODE_WIDTH = 270;
+const NODE_WIDTH_MAX = 270;
 const VERTICAL_GAP = 100;
 
 interface WorkflowDiagramProps {
@@ -32,6 +32,9 @@ export function WorkflowDiagram({
 }: WorkflowDiagramProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState(400);
+
+	// Responsive node width — shrink on small screens, capped at max
+	const nodeWidth = Math.min(NODE_WIDTH_MAX, containerWidth - 40);
 
 	// Measure container width and update on resize
 	useEffect(() => {
@@ -130,7 +133,7 @@ export function WorkflowDiagram({
 	}, [steps, containerWidth]);
 
 	return (
-		<div className="relative overflow-auto h-full">
+		<div className="relative overflow-auto min-h-[420px] lg:h-full">
 			{/* Diagram content */}
 			<div
 				ref={containerRef}
@@ -246,7 +249,7 @@ export function WorkflowDiagram({
 								left: node.position.x,
 								top: node.position.y - NODE_HEIGHT / 2,
 								transform: "translateX(-50%)",
-								width: NODE_WIDTH,
+								width: nodeWidth,
 							}}
 						>
 							<div
@@ -371,7 +374,7 @@ export function WorkflowDiagram({
 
 									<button
 										onClick={() => handleApprove(true)}
-										className="relative px-4 py-2 backdrop-blur-xl bg-neutral-900/90 dark:bg-neutral-700/90 hover:bg-neutral-700 text-white text-xs font-medium rounded-lg transition-all shadow-xl whitespace-nowrap"
+										className="relative px-5 py-2.5 sm:px-4 sm:py-2 backdrop-blur-xl bg-neutral-900/90 dark:bg-neutral-700/90 hover:bg-neutral-700 text-white text-xs font-medium rounded-lg transition-all shadow-xl whitespace-nowrap touch-manipulation"
 									>
 										Approve
 									</button>
