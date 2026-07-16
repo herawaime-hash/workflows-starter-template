@@ -33,7 +33,7 @@ export function WorkflowDiagram({
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState(400);
 
-	// Responsive node width — shrink on small screens, capped at max
+	// Responsive node width — 40px accounts for left+right panel padding (20px each side)
 	const nodeWidth = Math.min(NODE_WIDTH_MAX, containerWidth - 40);
 
 	// Measure container width and update on resize
